@@ -11,7 +11,7 @@ import os.path
 # - sum up the last 100 games and calculate the success
 # - a period changer button would be cool
 # - include a epsilon into graph
-epsLog = pd.read_csv("/home/andras/PycharmProjects/TradingGame/epsLog.csv")
+epsLog = pd.read_csv("/home/andras/PycharmProjects/TradingGame/epsLog2.csv")
 eps = epsLog.eps
 frame = epsLog.frame
 
@@ -21,13 +21,15 @@ eps_period = 10
 
 # 18 - 2048   0.00001
 # 20 - 512    0.00025
-# 21 - 1024   0.00025
-# 22 - 2048   0.00025
-# 23 - 1024
+# 21 - 1024   0.00025 - up guesses only
+# 22 - 2048   0.00025 - high tensor
+# 24 - 1024   0.00025 - buy sell skip
+# 26 - 1024   0.000125 - buy sell skip
+# 27 - 1024   0.00002 - buy sell skip
 
-log_A = "21"
-log_B = "24"
-log_C = "27"
+log_A = "26"
+log_B = "27"
+log_C = "28"
 
 
 def reduceCnt(eps, eps_period):
@@ -128,7 +130,7 @@ tC_correctnessList, tC_upList, tC_downList, tC_skiplist, tC_scoreList, tC_profit
 eC_correctnessList, eC_upList, eC_downList, eC_skiplist, eC_scoreList, eC_profitList = guessCorrectness(eC_log, e_period)
 
 
-latest = eA_correctnessList[-10:]
+latest = eC_correctnessList[-10:]
 print("Correct:", np.mean(latest))
 epsred = reduceCnt(eps, eps_period)
 
@@ -142,7 +144,7 @@ fig = plt.figure(figsize=(16, 10))
 # CORRECTNESS  ----------------------------------------------
 ax1 = fig.add_subplot(221)
 ax1.plot(epsred, "-", color='c', linewidth=1)
-ax1.set_ylim([0, 100])
+ax1.set_ylim([45, 100])
 plt.axhline(50, color='black', linewidth=0.5)
 
 ax1.plot(tA_correctnessList, "-", color='darkgreen', linewidth=1, label=log_A)
@@ -154,9 +156,9 @@ ax1.legend()
 # CHOICES  ----------------------------------------------
 ax2 = fig.add_subplot(222)
 
-ax2.plot(tA_upList, "-", color='g', linewidth=1)
-#ax2.plot(tA_downList, "-", color='r', linewidth=1)
-ax2.plot(tA_skiplist, "-", color='b', linewidth=1)
+ax2.plot(tC_upList, "-", color='g', linewidth=1)
+ax2.plot(tC_downList, "-", color='r', linewidth=1)
+ax2.plot(tC_skiplist, "-", color='b', linewidth=1)
 
 
 

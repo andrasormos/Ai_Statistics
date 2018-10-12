@@ -14,7 +14,7 @@ import os.path
 
 
 
-log_nr = "27"
+log_nr = "28"
 
 #imageName = "run_" + log_nr + "_random actions"
 #imageName = "run_" + log_nr + "_buy & skip actions"
@@ -22,8 +22,8 @@ log_nr = "27"
 imageName = "run_" + log_nr
 
 t_period = 100
-e_period = 100
-eps_period = 10
+e_period = 50
+eps_period = 1
 
 t_file = os.path.exists("/home/andras/PycharmProjects/TradingGame/logs/trainLog_0" + log_nr + ".csv")
 e_file = os.path.exists("/home/andras/PycharmProjects/TradingGame/logs/evalLog_0" + log_nr + ".csv")
