@@ -27,9 +27,9 @@ eps_period = 10
 # 26 - 1024   0.000125 - buy sell skip
 # 27 - 1024   0.00002 - buy sell skip
 
-log_A = "26"
-log_B = "27"
-log_C = "28"
+log_A = "27"
+log_B = "36"
+log_C = "37"
 
 
 def reduceCnt(eps, eps_period):
@@ -182,9 +182,9 @@ ax4 = fig.add_subplot(224)
 # ax4.plot(eB_upList, "-", color='magenta', linewidth=0.7)
 # ax4.plot(eB_skiplist, "-", color='darkmagenta', linewidth=0.7)
 
-ax4.plot(eC_upList, "-", color='red', linewidth=0.7)
-ax4.plot(eC_skiplist, "-", color='firebrick', linewidth=0.7)
-
+ax4.plot(eC_upList, "-", color='g', linewidth=0.7)
+ax4.plot(eC_skiplist, "-", color='b', linewidth=0.7)
+ax4.plot(eC_downList, "-", color='r', linewidth=0.7)
 
 # # PROFIT  ----------------------------------------------
 # ax5 = fig.add_subplot(225)

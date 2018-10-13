@@ -14,7 +14,7 @@ import os.path
 
 
 
-log_nr = "28"
+log_nr = "36"
 
 #imageName = "run_" + log_nr + "_random actions"
 #imageName = "run_" + log_nr + "_buy & skip actions"
@@ -22,7 +22,7 @@ log_nr = "28"
 imageName = "run_" + log_nr
 
 t_period = 100
-e_period = 50
+e_period = 10
 eps_period = 1
 
 t_file = os.path.exists("/home/andras/PycharmProjects/TradingGame/logs/trainLog_0" + log_nr + ".csv")
@@ -86,7 +86,7 @@ if e_file == True:
     print("e_Log Count:", len(e_profit))
     print("e_Log Period:", e_period)
 
-
+    print( e_guessSkipCnt)
 
 
 def guessCorrectness(guessedRightCnt, guessUpCnt, guessDownCnt, guessSkipCnt, rewardSum, guessCnt, profit, period):
@@ -161,7 +161,7 @@ if t_file == True:
     # AX 2 -
     ax2 = fig.add_subplot(222)
     ax2.plot(t_upList, "-", color='g', linewidth=1)
-    #ax2.plot(t_downList, "-", color='r', linewidth=1)
+    ax2.plot(t_downList, "-", color='r', linewidth=1)
     ax2.plot(t_skiplist, "-", color='b', linewidth=1)
     #ax2.set_ylim([-50, 50])
     #ax2.set_xlim([0, Epoch])
@@ -188,7 +188,7 @@ if e_file == True:
     # AX 4 -
     ax4 = fig.add_subplot(224)
     ax4.plot(e_upList, "-", color='g', linewidth=1)
-    #ax4.plot(e_downList, "-", color='r', linewidth=1)
+    ax4.plot(e_downList, "-", color='r', linewidth=1)
     ax4.plot(e_skiplist, "-", color='b', linewidth=1)
     #ax4.set_ylim([-70, 70])
     #ax4.set_xlim([0, Epoch])
